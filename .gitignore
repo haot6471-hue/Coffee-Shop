@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+
+# File người dùng tải lên (ảnh đại diện, hợp đồng)
+app/static/uploads/
