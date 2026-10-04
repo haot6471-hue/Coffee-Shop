@@ -134,16 +134,15 @@
     <!-- Toast container -->
     <div id="toast-container"></div>
 
-    <script>
+    <script data-admin-only="{{ '1' if admin_only else '0' }}">
+        const ADMIN_ONLY_PAGE = document.currentScript.dataset.adminOnly === "1";
         document.addEventListener("DOMContentLoaded", () => {
             const user = API.requireLogin();
             if (!user) return;
             API.renderUserCard(user);
-            {% if admin_only %}
-            if (!API.isAdmin()) {
+            if (ADMIN_ONLY_PAGE && !API.isAdmin()) {
                 window.location.href = "/profile";
             }
-            {% endif %}
         });
     </script>
     {% block scripts %}{% endblock %}
